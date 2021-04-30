@@ -72,10 +72,10 @@ int main()
     sem_init(&barber, 0, 0);
 
     pthread_create(&tidB, NULL, th_barber, NULL);
-    for(i=0; i< NR_CUSTOMERS; i++) {
+    for(i=0; i<NR_CUSTOMERS; i++) {
         pthread_create(&tidC[i], NULL, th_customer, (void*)(size_t)(i+1));
     }
-    for(i=0; i< NR_CUSTOMERS; i++) {
+    for(i=0; i<NR_CUSTOMERS; i++) {
         pthread_join(tidC[i], NULL);
     }
     pthread_cancel(tidB);
