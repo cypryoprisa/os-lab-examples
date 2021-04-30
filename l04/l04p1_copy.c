@@ -25,7 +25,7 @@ int main()
         return 1;
     }
 
-    while(1){
+    for(;;) {
         size = read(fd1, buff, BUFF_SIZE);
         if(size < 0) {
             //read error
