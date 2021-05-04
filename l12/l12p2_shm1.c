@@ -15,8 +15,8 @@ int main(void) {
     }
     ftruncate(shmFd, sizeof(char));
     sharedChar = (char*)mmap(0, sizeof(char), PROT_READ | PROT_WRITE, 
-        MAP_SHARED, shmFd, 0); ;
-    if(sharedChar == (void*)-1){
+        MAP_SHARED, shmFd, 0);
+    if(sharedChar == (void*)-1) {
         perror("Could not map the shared memory");
         return 1;
     }
