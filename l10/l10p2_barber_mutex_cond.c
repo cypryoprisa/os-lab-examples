@@ -63,6 +63,7 @@ void *th_customer(void *arg)
         printf("[C%02d] being served\n", myId);
         usleep(1000);
     }
+    printf("[C%02d] Exiting the barber shop\n", myId);
 
     return NULL;
 }
