@@ -24,7 +24,7 @@ void *th_barber(void *arg)
         crtCustomer = barberChair;
         pthread_mutex_unlock(&lock);
 
-        printf("[B  ] Serving customer C%d\n", crtCustomer);
+        printf("[B  ] Serving customer %d\n", crtCustomer);
         usleep(1000);
         
         pthread_mutex_lock(&lock);
@@ -55,12 +55,11 @@ void *th_customer(void *arg)
         pthread_cond_signal(&barber);
     } else {
         tooBusy = 1;
+        printf("[C%02d] Too busy, will come back another day.\n", myId);
     }
     pthread_mutex_unlock(&lock);
 
-    if(tooBusy) {
-        printf("[C%02d] Too busy, will come back another day.\n", myId);
-    } else {
+    if(!tooBusy) {
         printf("[C%02d] being served\n", myId);
         usleep(1000);
     }

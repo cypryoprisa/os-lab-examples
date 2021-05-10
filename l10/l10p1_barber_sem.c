@@ -39,12 +39,11 @@ void *th_customer(void *arg)
         printf("[C%02d] %d customer(s) waiting\n", myId, waitingCustomers);
     } else {
         tooBusy = 1;
+        printf("[C%02d] Too busy, will come back another day.\n", myId);
     }
     sem_post(&lock);
 
-    if(tooBusy) {
-        printf("[C%02d] Too busy, will come back another day.\n", myId);
-    } else {
+    if(!tooBusy) {
         sem_wait(&customer);
 
         sem_wait(&lock);
