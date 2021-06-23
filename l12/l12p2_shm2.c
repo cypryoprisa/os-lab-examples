@@ -4,7 +4,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int main(void) {
+int main(void)
+{
     int shmFd;
     volatile char *sharedChar = NULL;
 
